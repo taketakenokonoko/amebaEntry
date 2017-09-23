@@ -16,6 +16,9 @@
 			document.getElementById("txt_numShow").value = btnValue;
 		}
 		function onStatBtnClick(){
+			//ユーザ設定値とサーバ設定値をクリアする
+			document.getElementById("setNumPtn").value = "";
+			document.getElementById("showNumPtn").value = "";
 			//開始ボタンを非活性にする
 			document.getElementById("btn_start").disabled = true;
 			//開始ボタン押下時のイベント処理
@@ -64,9 +67,6 @@
 			document.getElementById("btn_decision").disabled = true;
 			//開始ボタン活性化
 			document.getElementById("btn_start").disabled = false;
-			//ユーザ設定値とサーバ設定値をクリアする
-			document.getElementById("setNumPtn").value = "";
-			document.getElementById("showNumPtn").value = "";
 		}
 	</script>
 	<body>
