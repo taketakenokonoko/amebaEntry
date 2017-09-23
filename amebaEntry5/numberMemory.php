@@ -10,22 +10,63 @@
 		var cnt;
 		function onNumBtnClick(btnValue){
 			//数値ボタン押下時のイベント処理
-			//※あとで作る
+			//hidden値に押したボタンの値を格納する
+			document.getElementById("setNumPtn").value = "" + document.getElementById("setNumPtn").value + btnValue;
+			//一応、テキストフィールドにも表示
+			document.getElementById("txt_numShow").value = btnValue;
 		}
 		function onStatBtnClick(){
+			//開始ボタンを非活性にする
+			document.getElementById("btn_start").disabled = true;
 			//開始ボタン押下時のイベント処理
-			cnt = 3;							//テキストに表示させる回数だが、ここの値は実際は変動させる
+			var loopMin = 3;
+			var loopMax = 5;
+			cnt = Math.floor(Math.random() * (loopMax + 1 - loopMin)) + loopMin;
+			//cnt = 3;							//テキストに表示させる回数だが、ここの値は実際は変動させる
+			document.getElementById("showNumPtn").value = "";
 			showNumber();
 		}
 		function showNumber(){
-			//１～９までの数値をランダムに表示する
-			//※あとでちゃんと作る
-			console.log("ok");
-			//cntが正の間は１秒単位で繰り返し実行
-			cnt = cnt - 1;
-			if(cnt>0){
-				setTimeout("showNumber()",1000);
+			
+			if(cnt==0){
+				//表示をクリアする
+				document.getElementById("txt_numShow").value = "";
+				//決定ボタンだけを活性化する
+				document.getElementById("btn_decision").disabled = false;
+			}else{
+				//０～９までの数値をランダムに表示する
+				var showMin = 1;
+				var showMax = 9;
+				var showValue = Math.floor(Math.random() * (showMax + 1 - showMin)) + showMin;
+				console.log("ok");
+				//テキストフィールドに表示
+				document.getElementById("txt_numShow").value = showValue;
+				//hidden値にサーバが表示した数値を格納
+				document.getElementById("showNumPtn").value = "" + document.getElementById("showNumPtn").value + showValue;
+				//cntが正の間は１秒単位で繰り返し実行
+				cnt = cnt - 1;
+				if(cnt>=0){
+					setTimeout("showNumber()",1000);
+				}
 			}
+			
+		}
+		function onDecBtnClick(){
+			//決定ボタン押下時の処理
+			var showValue = document.getElementById("showNumPtn").value;
+			var setValue = document.getElementById("setNumPtn").value;
+			if(showValue==setValue){
+				alert("一致してます");
+			}else{
+				alert("間違い！正解は"+showValue+"\r\nあなたが入れたのは"+setValue);
+			}
+			//決定ボタン非活性
+			document.getElementById("btn_decision").disabled = true;
+			//開始ボタン活性化
+			document.getElementById("btn_start").disabled = false;
+			//ユーザ設定値とサーバ設定値をクリアする
+			document.getElementById("setNumPtn").value = "";
+			document.getElementById("showNumPtn").value = "";
 		}
 	</script>
 	<body>

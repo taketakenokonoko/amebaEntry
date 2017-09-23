@@ -13,12 +13,14 @@
 		}
 		function flashCrystal(){
 			if(document.getElementById("crystal1_1").style.display=="block"){
+				//一番光ってないクリスタルが表示されている。二番目に光ってるクリスタルを表示させる。
 				beforeSts = 0;
 				console.log("1");
 				document.getElementById("crystal1_1").style.display="none";
 				document.getElementById("crystal1_2").style.display="block";
 				document.getElementById("crystal1_3").style.display="none";
 			}else if(document.getElementById("crystal1_2").style.display=="block"){
+				//二番目に光ってるクリスタルが表示されている。直前の光り具合に応じて、次に切り替えるクリスタルを決める。
 				console.log("2");
 				if(beforeSts==0){
 					document.getElementById("crystal1_1").style.display="none";
@@ -30,6 +32,7 @@
 					document.getElementById("crystal1_3").style.display="none";
 				}
 			}else{
+				//一番光ってるクリスタルが表示されている。二番目に光ってるクリスタルを表示させる。
 				console.log("3");
 				beforeSts = 1;
 				document.getElementById("crystal1_1").style.display="none";
