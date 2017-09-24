@@ -40,8 +40,8 @@
 			document.getElementById("btn_No9").disabled = true;
 			var loopMin = 3;
 			var loopMax = 5;
+			//テキストに表示させる回数
 			cnt = Math.floor(Math.random() * (loopMax + 1 - loopMin)) + loopMin;
-			//cnt = 3;							//テキストに表示させる回数だが、ここの値は実際は変動させる
 			document.getElementById("showNumPtn").value = "";
 			showNumber();
 		}
