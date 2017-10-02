@@ -5,7 +5,6 @@
 		<meta http-equiv="content-language" content="ja">
 	</head>
 	<script type="text/javascript">
-		var beforeSts;
 		window.onload = function(){
 			//0.3秒おきに、表示するクリスタルを変える
 			console.log("test");
@@ -13,12 +12,12 @@
 		}
 		function flashCrystal(){
 			if(document.getElementById("crystal1_1").style.display=="block"){
-				//一番光ってないクリスタルが表示されている。二番目に光ってるクリスタルを表示させる。
+				//一番光ってないクリスタルが表示されている。光ってるクリスタルを表示させる。
 				console.log("1");
 				document.getElementById("crystal1_1").style.display="none";
 				document.getElementById("crystal1_2").style.display="block";
 			}else if(document.getElementById("crystal1_2").style.display=="block"){
-				//二番目に光ってるクリスタルが表示されている。直前の光り具合に応じて、次に切り替えるクリスタルを決める。
+				//光ってるクリスタルが表示されている。光っていないクリスタルを表示させる。
 				console.log("2");
 				document.getElementById("crystal1_1").style.display="block";
 				document.getElementById("crystal1_2").style.display="none";
